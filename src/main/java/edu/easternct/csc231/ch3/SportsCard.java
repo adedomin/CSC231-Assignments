@@ -1,7 +1,5 @@
 package edu.easternct.csc231.ch3;
 
-import java.io.Serializable;
-
 /**
  * Sports Card invetory class;
  * for use with a db
@@ -11,10 +9,8 @@ import java.io.Serializable;
  *
  * @author Anthony DeDominic
  */
-public class SportsCard implements Serializable {
+public class SportsCard {
 
-	static final long serialVersionUID;
-	
 	// name of card
 	// e.g. the player's full name
 	private String name;
@@ -53,7 +49,7 @@ public class SportsCard implements Serializable {
 	public String toString()
 	{
 		return String.format(
-				"Player Name: %s\nDetails: %s\nCondition: %s\nValue: $%,.2f",
+				"Player Name: %s\nDetails: %s\nCondition: %s\nValue: $%,.2f\n",
 				name, description, 
 				condition, value);
 	}
@@ -112,5 +108,10 @@ public class SportsCard implements Serializable {
 	 */
 	public void setValue(double value) {
 		this.value = value;
+	}
+
+	public static void main(String[] argv) {
+
+		SportsCard sportsCard = new SportsCard();
 	}
 }

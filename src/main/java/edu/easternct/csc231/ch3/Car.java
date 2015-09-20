@@ -1,7 +1,5 @@
 package edu.easternct.csc231.ch3;
 
-import java.io.Serializable;
-
 /**
  * class which describes a car in a dealership
  * <p>
@@ -10,9 +8,7 @@ import java.io.Serializable;
  *
  * @author Anthony DeDominic
  */
-public class Car implements Serializable {
-
-	static final long serialVersionUID;
+public class Car {
 
 	// lot location id
 	// location of the car in the dealership
@@ -40,7 +36,9 @@ public class Car implements Serializable {
 	 * @param year
 	 * @param msrp
 	 */
-	public Car(String lotId, String make, String model, String year, double msrp) {
+	public Car(String lotId, String make, 
+			String model, String year, 
+			double msrp) {
 		this.lotId = lotId;
 		this.make = make;
 		this.model = model;
@@ -54,7 +52,7 @@ public class Car implements Serializable {
 	 */
 	public String toString() {
 		return String.format(
-				"Make: %s\nModel: %s\nYear: %s\nMSRP: $%,.2\nLocation: %s",
+				"Make: %s\nModel: %s\nYear: %s\nMSRP: $%,.2f\nLocation: %s\n",
 				make, model, year, msrp, lotId);
 	}
 
@@ -126,5 +124,29 @@ public class Car implements Serializable {
 	 */
 	public void setMsrp(double msrp) {
 		this.msrp = msrp;
+	}
+
+	/**
+	 * Class testing
+	 */ 
+	public static void main(String[] argv) {
+		
+		// calls empty constructor
+		Car car = new Car();
+
+		car.setLotId("A34");
+		car.setMake("Toyota");
+		car.setModel("Hilux");
+		car.setYear("2016");
+		car.setMsrp(25000);
+
+		System.out.printf("%s\n", car);
+
+		// called with other constructor
+		Car car2 = new Car(
+				"B17", "Honda", 
+				"Civic", "2010", 8000);
+
+		System.out.printf("%s", car2);
 	}
 }

@@ -1,7 +1,5 @@
 package edu.easternct.csc231.ch3;
 
-import java.io.Serializable;
-
 /**
  * Object describing an office, 
  * where it is located, 
@@ -11,9 +9,8 @@ import java.io.Serializable;
  *
  * @author Anthony DeDominic
  */
-public class Office implements Serializable {
+public class Office {
 
-	static final long serialVersionUID;
 	// name of org or professor using office
 	private String userName;
 	// building name
@@ -44,7 +41,7 @@ public class Office implements Serializable {
 	 */
 	public String toString() {
 		return String.format(
-				"Professor/Organization: %s\nBuilding: %s\nOffice #: %s",
+				"Professor/Organization: %s\nBuilding: %s\nOffice #: %s\n",
 				userName, buildingName, officeId);
 	}
 
@@ -88,5 +85,26 @@ public class Office implements Serializable {
 	 */
 	public void setOfficeId(String officeId) {
 		this.officeId = officeId;
+	}
+
+	/**
+	 * testing
+	 */
+	public static void main(String[] argv) {
+
+		// empty constructor
+		Office office = new Office();
+
+		office.setUserName("Anthony DeDominic");
+		office.setBuildingName("Science Building");
+		office.setOfficeId("1-138");
+
+		System.out.printf("%s\n", office);
+
+		Office office2 = new Office(
+				"Comp Sci Club", 
+				"Science Building", "2-254");
+
+		System.out.printf("%s", office2);
 	}
 }

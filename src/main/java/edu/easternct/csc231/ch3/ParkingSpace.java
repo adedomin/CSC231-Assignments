@@ -1,7 +1,5 @@
 package edu.easternct.csc231.ch3;
 
-import java.io.Serializable;
-
 /**
  * To track parking spaces and users who have reserved them;
  * serializable to allow for persistent storage
@@ -10,9 +8,7 @@ import java.io.Serializable;
  *
  * @author Anthony DeDominic
  */
-public class ParkingSpace implements Serializable {
-
-	static final long serialVersionUID;
+public class ParkingSpace {
 
 	// specific location of space
 	private String spaceId;
@@ -44,7 +40,7 @@ public class ParkingSpace implements Serializable {
 	public String toString()
 	{
 		return String.format(
-				"Space ID: %s\nName: %s\nGarage: %s",
+				"Space ID: %s\nName: %s\nGarage: %s\n",
 				spaceId, name, address);
 	}
 
@@ -88,5 +84,21 @@ public class ParkingSpace implements Serializable {
 	 */
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public static void main(String[] argv) {
+
+		ParkingSpace parkingSpace = new ParkingSpace();
+
+		parkingSpace.setSpaceId("235-A");
+		parkingSpace.setName("Anthony");
+		parkingSpace.setAddress("234 Main St. Walla Walla, WA");
+
+		System.out.printf("%s\n", parkingSpace);
+
+		ParkingSpace parkingSpace2 = new ParkingSpace(
+				"12-B", "DeDominic", "1 Infinity Loop Dr. Cupertino, CA");
+
+		System.out.printf("%s", parkingSpace2);
 	}
 }
