@@ -1,0 +1,34 @@
+Original STRING: I really enjoy this class by Professor DePratti!
+
+REPLACE GLOBALLY BY REGEX:
+
+.replaceAll is basically the s/regex/replace/g (ed) of java
+
+Above, I have called the method to change out the word class, using a simple pattern, with assignment
+I then replaced your name using [A-HJ-Z].* which doesn't hit the capital I at the begining but matches your name at the end and replace it with my name
+String: I really enjoy this assignment by Anthony DeDominic!
+
+CONCATENATION:
+
+I can also concatenate strings too using .concat() method
+String: I really enjoy this class by Professor DePratti! This is another String!
+
+SPLITTING:
+
+using .split() a string can be split by a regular expression into a String[] array.
+
+Each string below was split and fed into a foreach loop and printed on a new line
+String: I
+String: really
+String: enjoy
+String: this
+String: class
+String: by
+String: Professor
+String: DePratti!
+
+JOINING:
+
+Joining using join allows you to bring a collection of strings and to append them together by a common delimiter, in this case the string "--".
+String: I--really--enjoy--this--class--by--Professor--DePratti!
+
