@@ -54,7 +54,7 @@ public class DiamondTile {
 			// from approximate center row
 			// plus center row
 			if (Math.abs(approx_mid_height-i) >= 0 &&
-				Math.abs(approx_mid_height-i) <= 2)
+				Math.abs(approx_mid_height-i) <= 3)
 			{
 				// note that center in this
 				// context is refering to
@@ -86,7 +86,7 @@ public class DiamondTile {
 				// in 2 tiles to the left of center
 				// and another 2 to the right of 
 				// center
-				int tileCount = Math.abs(Math.abs(approx_mid_height-i)-3)-1;
+				int tileCount = Math.abs(Math.abs(approx_mid_height-i)-3);
 				System.out.printf("%s\n", 
 					buildRow(width,tileCount));
 			}
