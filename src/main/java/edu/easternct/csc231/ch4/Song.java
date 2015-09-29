@@ -1,4 +1,6 @@
-package edu.easternct.csc231.ch3;
+package edu.easternct.csc231.ch4;
+
+import java.util.Base64;
 
 /**
  * Song object used to describe a track 
@@ -9,6 +11,27 @@ package edu.easternct.csc231.ch3;
  * @author Anthony DeDominic
  */
 public class Song {
+
+	// emulate how a db can be used to
+	// look up artist and their genre
+	private void databaseEmulator()
+	{
+		if (this.artist.equals("Boards of Canada"))
+		{
+			insertGenre("Electronic");
+			insertGenre("IDM");
+		}
+		else if (this.artist.equals("Spyro Gyra"))
+		{
+			insertGenre("Jazz");
+			insertGenre("Jazz Fusion");
+			insertGenre("Smooth Jazz");
+		}
+		else
+		{
+			insertGenre("UNKN");
+		}
+	}
 
 	// database ID of song
 	private String songId;
@@ -28,8 +51,16 @@ public class Song {
 
 	/**
 	 * empty constructor
+	 * <p>
+	 * sets strings to empty to prevent
+	 * null dereference in .equals()
 	 */
 	public Song() {
+		this.songId = "";
+		this.title = "";
+		this.artist = "";
+		this.genre = "";
+		this.suggestedSongs = "";
 	}
 
 	/**
@@ -51,30 +82,46 @@ public class Song {
 	}
 
 	/**
+	 * Copy Constructor
+	 */
+	public Song(Song song)
+	{
+		// note strings are immutable
+		// so even though this is copy by ref
+		// it's safe.
+		this.songId = song.getSongId();
+		this.title  = song.getTitle();
+		this.artist = song.getArtist();
+		this.genre  = song.getGenre();
+		this.suggestedSongs = song.getSuggestedSongs();
+	}
+
+	/**
 	 * string representation of object
 	 */
 	public String toString()
 	{
+		// getters tested now...
 		return String.format(
 				"Song ID: %s\nTitle: %s\nArtist: %s\nGenre: %s\nSuggested Songs: %s\n",
-				songId, title, 
-				artist, genre,
-				suggestedSongs);
+				this.getSongId(), this.getTitle(), 
+				this.getArtist(), this.getGenre(),
+				this.getSuggestedSongs());
 	}
 
 	/**
 	 * checks if object is an exact clone
 	 *
-	 * @param lh object being compared
+	 * @param rh object being compared
 	 * @return true if objects have the same data
 	 */
-	public boolean equals(Song lh)
+	public boolean equals(Song rh)
 	{
-		return (this.songId.equals(lh.getSongId()) &&
-				this.title.equals(lh.getTitle()) &&
-				this.artist.equals(lh.getArtist()) &&
-				this.genre.equals(lh.getGenre()) &&
-				this.suggestedSongs.equals(lh.getSuggestedSongs()));
+		return (this.songId.equals(rh.getSongId()) &&
+				this.title.equals(rh.getTitle()) &&
+				this.artist.equals(rh.getArtist()) &&
+				this.genre.equals(rh.getGenre()) &&
+				this.suggestedSongs.equals(rh.getSuggestedSongs()));
 	}
 
 	/**
@@ -179,6 +226,21 @@ public class Song {
 	}
 
 	/**
+	 * generate a songId using artist:title
+	 * <p>
+	 * creates it using base64
+	 */
+	public void generateSongId() {
+
+		this.songId = 
+			Base64.getEncoder().encodeToString(
+			this.artist
+			.concat(":")
+			.concat(this.title)
+			.getBytes());
+	}
+
+	/**
 	 * @return the title
 	 */
 	public String getTitle() {
@@ -239,6 +301,22 @@ public class Song {
 	}
 
 	/**
+	 * find genres by using artist name
+	 */
+	public void findGenres() {
+
+		if (this.artist == null ||
+			this.artist.isEmpty())
+		{
+			return;
+		}
+		else
+		{
+			databaseEmulator();
+		}
+	}
+
+	/**
 	 * Unit Test
 	 * <p>
 	 * demonstrates use of class also
@@ -283,6 +361,26 @@ public class Song {
 				"Re-Flex", "New Wave",
 				"455gfsG,HjkvD3");
 
-		System.out.printf("%s", song3);
+		System.out.printf("%s\n", song3);
+
+		// shows possibility for derived instance variables
+		// generates a songId using title + artist
+		// and "finds" genre by artist name
+		Song song4 = new Song();
+		song4.setTitle("Bright Lights");
+		song4.setArtist("Spyro Gyra");
+		song4.generateSongId();
+		song4.findGenres();
+
+		System.out.printf("%s\n", song4);
+
+		//exact copy of above object
+		Song song5 = new Song(song4);
+
+		// test .equals()
+		if (song4.equals(song5)) {
+			
+			System.out.printf("Song 4 and Song 5 are the same\n");
+		}
 	}
 }

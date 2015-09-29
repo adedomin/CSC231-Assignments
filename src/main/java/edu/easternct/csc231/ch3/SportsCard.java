@@ -110,6 +110,11 @@ public class SportsCard {
 		this.value = value;
 	}
 
+	/**
+	 * Unit Test
+	 * <p>
+	 * Represents use of class
+	 */
 	public static void main(String[] argv) {
 
 		SportsCard sportsCard = new SportsCard();

@@ -86,6 +86,11 @@ public class ParkingSpace {
 		this.address = address;
 	}
 
+	/**
+	 * Unit Test
+	 * <p>
+	 * Represents use of class
+	 */
 	public static void main(String[] argv) {
 
 		ParkingSpace parkingSpace = new ParkingSpace();

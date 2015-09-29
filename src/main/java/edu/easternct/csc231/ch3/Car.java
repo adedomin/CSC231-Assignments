@@ -127,7 +127,9 @@ public class Car {
 	}
 
 	/**
-	 * Class testing
+	 * Unit Test
+	 * <p>
+	 * represents use of class
 	 */ 
 	public static void main(String[] argv) {
 		

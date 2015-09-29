@@ -88,7 +88,9 @@ public class Office {
 	}
 
 	/**
-	 * testing
+	 * Unit Test
+	 * <p>
+	 * Use of class
 	 */
 	public static void main(String[] argv) {
 
