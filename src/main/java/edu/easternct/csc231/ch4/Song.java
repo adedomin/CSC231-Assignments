@@ -64,6 +64,8 @@ public class Song {
 	}
 
 	/**
+	 * Full Constructor
+	 *
 	 * @param songId
 	 * @param title
 	 * @param artist
@@ -344,6 +346,8 @@ public class Song {
 		// with no action taken
 		song.insertSuggestedSong(",fhjyhtgfTEST");
 
+		// .toString() uses getters, 
+		// so getters are defacto tested
 		System.out.printf("%s\n", song);
 
 		// shows that unset vars
