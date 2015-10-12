@@ -69,7 +69,7 @@ public class DiamondTile {
 		// note the integer casting
 		// can't be floating position
 		int approx_mid_height = (int) (height/2);	
-
+		System.out.printf("%d\n",approx_mid_height);
 		// pyramid will grow too large for a skinny wall
 		// if the height is tall and width small
 		// so this finds the smallest side
