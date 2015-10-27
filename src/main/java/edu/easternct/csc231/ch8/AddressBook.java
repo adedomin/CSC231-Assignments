@@ -133,6 +133,7 @@ public class AddressBook {
 			String birthday = in.nextLine();
 
 			contactBook.insertContact(new Contact(name, address, birthday));
+			System.out.printf("\n\n%s\n\n", contactBook.getContact(name));
 
 			System.out.println("Would you like to enter Contact Information? Enter 'y' or 'n'. ");
 			answer = in.next();
@@ -150,6 +151,7 @@ public class AddressBook {
 			String attendance = in.nextLine();
 
 			contactBook.insertEvent(new Event(title, attendance));
+			System.out.printf("\n\n%s\n\n",contactBook.getEvent(title));
 
 			System.out.print("Would you like to enter more Event Information? Enter 'y' or 'n'. \t");
 			answer = in.next();
